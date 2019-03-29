@@ -1,0 +1,14 @@
+image: Visual Studio 2017
+
+before_build:
+- nuget restore
+- choco install opencover.portable
+- choco install codecov
+
+build:
+  project: Konatus.PredicateBuilder.sln
+  verbosity: minimal
+
+test_script:
+- OpenCover.Console.exe -register:user -target:"xunit.console.x86.exe" -targetargs:".Konatus.PredicateBuilderTest\bin\Debug\netcoreapp2.1\Konatus.PredicateBuilder.dll -noshadow" -filter:"+[Konatus.PredicateBuilder]* -[Konatus.PredicateBuilderTest]*" -output:".\Codecov.xml"
+- codecov -f "Codecov.xml
