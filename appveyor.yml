@@ -15,7 +15,7 @@ before_build:
 - cmd: nuget restore
 build_script:
  - choco install "sonarscanner-msbuild-net46" -y
- - SonarScanner.MSBuild.exe begin /k:"predicate-builder" /d:sonar.organization="celsomarques-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
+ - SonarScanner.MSBuild.exe begin /k:"predicate-builder" /o:"celsomarques-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
  - msbuild /verbosity:quiet "Konatus.PredicateBuilder.sln"
  - SonarScanner.MSBuild.exe end /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
 artifacts:
