@@ -21,7 +21,7 @@ build_script:
  - dotnet build /verbosity:quiet "Konatus.PredicateBuilder.sln"
  
 test_script:
- - dotnet test Konatus.PredicateBuilderTest\**\*.dll
+ - dotnet test
 
 after_test:
  - dotnet sonarscanner end /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
