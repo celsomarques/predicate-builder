@@ -10,5 +10,5 @@ build:
   verbosity: minimal
 
 test_script:
-- OpenCover.Console.exe -register:user -target:"xunit.console.x86.exe" -targetargs:".Konatus.PredicateBuilderTest\bin\Debug\netcoreapp2.1\Konatus.PredicateBuilder.dll -noshadow" -filter:"+[Konatus.PredicateBuilder]* -[Konatus.PredicateBuilderTest]*" -output:".\Codecov.xml"
+- OpenCover.Console.exe -register:user -target:"xunit.console.x86.exe" -targetargs:".\Konatus.PredicateBuilderTest\bin\Debug\netcoreapp2.1\Konatus.PredicateBuilder.dll -noshadow" -filter:"+[Konatus.PredicateBuilder]* -[Konatus.PredicateBuilderTest]*" -output:".\Codecov.xml"
 - codecov -f "Codecov.xml
