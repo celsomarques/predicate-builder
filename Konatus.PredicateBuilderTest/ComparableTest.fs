@@ -1,4 +1,4 @@
-module Comparable
+﻿module Comparable
 
 open System
 open Xunit
@@ -50,4 +50,4 @@ let ``IsAfterOrEquals(1, 0) - Should return true`` () =
 
 [<Fact>]
 let ``IsAfterOrEquals(1, 1) - Should return true`` () =
-    Comparable.IsAfterOrEquals 1 1 |> Assert.True 
+    Comparable.IsAfterOrEquals 1 1 |> Assert.True

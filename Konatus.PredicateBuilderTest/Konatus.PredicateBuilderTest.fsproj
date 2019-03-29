@@ -21,4 +21,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Konatus.PredicateBuilder\Konatus.PredicateBuilder.fsproj" />
   </ItemGroup>
+
 </Project>

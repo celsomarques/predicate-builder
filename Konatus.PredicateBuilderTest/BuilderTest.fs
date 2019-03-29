@@ -1,4 +1,4 @@
-﻿module Builder
+module Builder
 
 open System
 open Xunit
