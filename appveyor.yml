@@ -14,10 +14,10 @@ nuget:
 before_build:
 - cmd: nuget restore
 build_script:
- - choco install "sonarscanner-msbuild-net46" -y
- - SonarScanner.MSBuild.exe begin /k:"predicate-builder" /o:"celsomarques-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
- - msbuild /verbosity:quiet "Konatus.PredicateBuilder.sln"
- - SonarScanner.MSBuild.exe end /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
+ - choco install "sonarscanner-msbuild-netcoreapp2.0" -y
+ - dotnet sonarscanner begin /k:"predicate-builder" /o:"celsomarques-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
+ - dotnet build /verbosity:quiet "Konatus.PredicateBuilder.sln"
+ - dotnet sonarscanner end /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
 artifacts:
 - path: Konatus.PredicateBuilder\bin\Debug\netcoreapp2.1\Konatus.PredicateBuilder.dll
   name: Konatus.PredicateBuilder.dll
