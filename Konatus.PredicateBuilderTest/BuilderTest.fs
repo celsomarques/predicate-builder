@@ -1,90 +1,98 @@
-module Builder
+module PredicateBuilder
 
 open System
 open Xunit
-open Konatus.Predicate
+open Konatus
 
 [<Fact>]
 let ``And(false) - should return false`` () =
-    Builder().
+    PredicateBuilder().
         And(false).
-        Value |> Assert.False
+        Value() |> Assert.False
 
 [<Fact>]
 let ``And(false).And(true) - should return false`` () =
-    Builder().
+    PredicateBuilder().
         And(false).
         And(true).
-        Value |> Assert.False
+        Value() |> Assert.False
 
 [<Fact>]
 let ``And(true) - should return true`` () =
-    Builder().
+    PredicateBuilder().
         And(true).
-        Value |> Assert.True
+        Value() |> Assert.True
 
 [<Fact>]
 let ``And(true).And(true) - should return true`` () =
-    Builder().
+    PredicateBuilder().
         And(true).
         And(true).
-        Value |> Assert.True
+        Value() |> Assert.True
 
 [<Fact>]
 let ``Or(false) - should return false`` () =
-    Builder().
+    PredicateBuilder().
         Or(false).
-        Value |> Assert.False
+        Value() |> Assert.False
 
 [<Fact>]
 let ``Or(false, false) - should return false`` () =
-    Builder().
+    PredicateBuilder().
         Or(false, false).
-        Value |> Assert.False
+        Value() |> Assert.False
 
 [<Fact>]
 let ``Or(false, true) - should return true`` () =
-    Builder().
+    PredicateBuilder().
         Or(false, true).
-        Value |> Assert.True
+        Value() |> Assert.True
 
 [<Fact>]
 let ``Or(false, true).And(true) - should return true`` () =
-    Builder().
+    PredicateBuilder().
         Or(false, true).
         And(true).
-        Value |> Assert.True
+        Value() |> Assert.True
 
 [<Fact>]
 let ``Or(false, true).And(false) - should return false`` () =
-    Builder().
+    PredicateBuilder().
         Or(false, true).
         And(false).
-        Value |> Assert.False
+        Value() |> Assert.False
 
 [<Fact>]
 let ``And(true).And(Or(false, true)) - should return true`` () =
-    Builder().
+    PredicateBuilder().
         And(true).
         And(
-            Builder.Or(false, true)
+            PredicateBuilder.Or(false, true)
         ).
-        Value |> Assert.True
+        Value() |> Assert.True
 
 [<Fact>]
-let ``And(true).And(Or(false, true)) - should return false`` () =
-    Builder().
+let ``And(true).And(Or(false, false)) - should return false`` () =
+    PredicateBuilder().
         And(true).
         And(
-            Builder.Or(false)
+            PredicateBuilder.Or(false, false)
         ).
-        Value |> Assert.False
+        Value() |> Assert.False
 
 [<Fact>]
 let ``And(false).And(Or(false, true)) - should return false`` () =
-    Builder().
+    PredicateBuilder().
         And(false).
         And(
-            Builder.Or(false, true)
+            PredicateBuilder.Or(false, true)
         ).
-        Value |> Assert.False
+        Value() |> Assert.False
+
+[<Fact>]
+let ``PredicateBuilder.Or(false, false)) - should return false`` () =
+    PredicateBuilder.Or(false, false) |> Assert.False
+
+[<Fact>]
+let ``PredicateBuilder.Or(true, false)) - should return true`` () =
+    PredicateBuilder.Or(true, false) |> Assert.True
