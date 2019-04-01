@@ -32,11 +32,11 @@ using static Konatus.Comparable;
 (...)
 public Func<Table, bool> Filter(object someObj) {
     return = p => new PredicateBuilder().
-        And(IsEquals(p.ID, someObj.FOREIGN_ID.Value)).
-        And(IsBeforeOrEquals(p.START_DATE.Date, someObj.START_TIME.Value.Date)).
+        And(IsEquals(p.ID, someObj.FOREIGN_ID ?? nul)).
+        And(IsBeforeOrEquals(p.START_DATE.Date, someObj.START_TIME?.Date)).
         And(
             Or(
-                IsAfterOrEquals(p.END_DATE.Value.Date, someObj.END_TIME.Value.Date),
+                IsAfterOrEquals(p.END_DATE.Value.Date, someObj.END_TIME?.Date),
                 Not(p.HasEndDate())
             )
         ).
