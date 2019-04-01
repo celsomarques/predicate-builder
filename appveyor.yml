@@ -31,7 +31,7 @@ after_test:
  - dotnet sonarscanner end /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
  
 artifacts:
-- path: .\artifacts\**\*.nupkg
+- path: .\Konatus.PredicateBuilder\artifacts\*.nupkg
   name: NuGet
   
 deploy:
