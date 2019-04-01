@@ -4,13 +4,16 @@ image: Visual Studio 2017
 environment:
   matrix:
     - platform: Any CPU
-      configuration: Debug
-    - platform: Any CPU
       configuration: Release
 matrix:
   fast_finish: false
+  
+pull_requests:
+  do_not_increment_build_number: true
+
 nuget:
   project_feed: true
+  disable_publish_on_pr: true
   
 before_build:
  - dotnet restore
@@ -19,6 +22,7 @@ before_build:
 
 build_script:
  - dotnet build /verbosity:quiet "Konatus.PredicateBuilder.sln"
+ - dotnet pack .\Konatus.PredicateBuilder -c Release -o .\artifacts /p:Version=%APPVEYOR_BUILD_VERSION%
  
 test_script:
  - dotnet test
@@ -27,7 +31,14 @@ after_test:
  - dotnet sonarscanner end /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
  
 artifacts:
-- path: Konatus.PredicateBuilder\bin\Debug\netcoreapp2.1\Konatus.PredicateBuilder.dll
-  name: Konatus.PredicateBuilder.dll
-- path: Konatus.PredicateBuilder\bin\Release\netcoreapp2.1\Konatus.PredicateBuilder.dll
-  name: Konatus.PredicateBuilder.dll
+- path: .\Konatus.PredicateBuilder\artifacts\*.nupkg
+  name: NuGet
+  
+deploy:
+- provider: NuGet
+  name: production
+  api_key:
+    secure: l8C4clHka5NNot0A9ioX8dJ5EOo61j7KbgUM6/Divzb5jmn+osxQ/IdqvJiPpVBz
+  on:
+    branch: master
+    appveyor_repo_tag: true

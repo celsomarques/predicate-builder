@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/tp317tsmd1myo32v/branch/master?svg=true)](https://ci.appveyor.com/project/celsomarques/predicate-builder/branch/master)
+
+
 # Predicate Builder
 
 Predicate Builder is a simple tool to make your code cleaner and more readable. It was written in F# and use _mutable_ list that holds boolean values in order to provide DSL to C#. 
