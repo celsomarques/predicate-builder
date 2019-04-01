@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
+    <id>Konatus.PredicateBuilder</id>
+    <version>1.0.35</version>
+    <title>Konatus.PredicateBuilder</title>
     <authors>Konatus</authors>
     <owners>Konatus</owners>
     <projectUrl>https://github.com/celsomarques/predicate-builder</projectUrl>
