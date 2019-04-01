@@ -1,16 +1,21 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <id>Konatus.PredicateBuilder</id>
+    <version>1.0.35</version>
+    <title>Konatus.PredicateBuilder</title>
+    <authors>Konatus</authors>
+    <owners>Konatus</owners>
     <projectUrl>https://github.com/celsomarques/predicate-builder</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <description>Predicate Builder is a simple tool to make your code cleaner and more readable. It was written in F# and use mutable list that holds boolean values in order to provide DSL to C#.</description>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>predicate-builder</tags>
   </metadata>
+  <files>
+    <file src="bin\Release\netstandard1.6\*.dll" target="lib\netstandard1.6" />
+    <file src="bin\Release\netstandard1.6\*.dll" target="lib\netcoreapp2.0" />
+    <file src="bin\Release\netstandard1.6\*.dll" target="lib\net45" />
+  </files>
 </package>
