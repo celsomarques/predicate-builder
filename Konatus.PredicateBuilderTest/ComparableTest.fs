@@ -21,6 +21,14 @@ let ``IsEquals(0, 1) - Should return false`` () =
     Comparable.IsEquals 0 1 |> Assert.False
 
 [<Fact>]
+let ``IsEquals("test", "Test") - Should return false`` () =
+    Comparable.IsEquals "test" "Test" |> Assert.False
+
+[<Fact>]
+let ``IsEquals("test", "test") - Should return true`` () =
+    Comparable.IsEquals "test" "test" |> Assert.True
+
+[<Fact>]
 let ``IsBefore(0, 1) - Should return true`` () =
     Comparable.IsBefore 0 1 |> Assert.True 
 
