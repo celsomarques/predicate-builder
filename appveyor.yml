@@ -1,0 +1,33 @@
+    
+version: 1.0.{build}
+image: Visual Studio 2017
+environment:
+  matrix:
+    - platform: Any CPU
+      configuration: Debug
+    - platform: Any CPU
+      configuration: Release
+matrix:
+  fast_finish: false
+nuget:
+  project_feed: true
+  
+before_build:
+ - dotnet restore
+ - dotnet tool install --global dotnet-sonarscanner
+ - dotnet sonarscanner begin /k:"predicate-builder" /o:"celsomarques-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
+
+build_script:
+ - dotnet build /verbosity:quiet "Konatus.PredicateBuilder.sln"
+ 
+test_script:
+ - dotnet test
+
+after_test:
+ - dotnet sonarscanner end /d:sonar.login="287074886f2e0e848ff4e4758faee87ff827e51c"
+ 
+artifacts:
+- path: Konatus.PredicateBuilder\bin\Debug\netcoreapp2.1\Konatus.PredicateBuilder.dll
+  name: Konatus.PredicateBuilder.dll
+- path: Konatus.PredicateBuilder\bin\Release\netcoreapp2.1\Konatus.PredicateBuilder.dll
+  name: Konatus.PredicateBuilder.dll
