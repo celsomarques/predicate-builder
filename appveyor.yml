@@ -25,7 +25,7 @@ before_build:
 
 build_script:
  - dotnet build /verbosity:quiet "Konatus.PredicateBuilder.sln"
- - dotnet pack .\Konatus.PredicateBuilder -c Release -o .\artifacts /p:NuspecFile=.\Konatus.PredicateBuilder\Konatus.PredicateBuilder.nuspec /p:Version=%APPVEYOR_BUILD_VERSION%
+ - dotnet pack .\Konatus.PredicateBuilder -c Release -o .\artifacts /p:NuspecFile=.\Konatus.PredicateBuilder.nuspec /p:Version=%APPVEYOR_BUILD_VERSION%
  
 test_script:
  - dotnet test
